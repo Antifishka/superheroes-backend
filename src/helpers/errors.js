@@ -19,17 +19,10 @@ class NotFoundError extends JSNTestError {
     }
 }
 
-class RegistrationConflictError extends JSNTestError { 
+class ConflictError extends JSNTestError { 
     constructor(message) { 
         super(message);
         this.status = 409;
-    }
-}
-
-class NotAuthorizedError extends JSNTestError {
-    constructor(message) {
-        super(message);
-        this.status = 401;
     }
 }
 
@@ -37,6 +30,5 @@ module.exports = {
     JSNTestError,
     ValidatoinError,
     NotFoundError,
-    RegistrationConflictError,
-    NotAuthorizedError,
+    ConflictError,
 }
