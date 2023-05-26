@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const superheroSchema = new mongoose.Schema({ 
+const superheroSchema = new mongoose.Schema({
   nickname: {
     type: String,
     required: [true, 'Nickname is required'],
@@ -23,7 +23,9 @@ const superheroSchema = new mongoose.Schema({
     type: Array,
     default: null,
   },
-});
+},
+  { versionKey: false, timestamps: true }
+);
 
 const Superhero = mongoose.model('Superhero', superheroSchema);
 

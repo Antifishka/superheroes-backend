@@ -12,9 +12,9 @@ router.get('/', asyncWrapper(ctrlHero.getHeroes));
 router.get('/:heroId', asyncWrapper(ctrlHero.getById));
 // // router.post('/', addPostValidation, asyncWrapper(ctrlHero.createContact));
 router.post('/', asyncWrapper(ctrlHero.createHero));
-// router.delete('/:heroId', asyncWrapper(ctrlHero.removeContact));
-// // router.put('/:heroId', addPutValidation, asyncWrapper(ctrlHero.changeContact));
-// router.put('/:heroId', asyncWrapper(ctrlHero.changeContact));
+router.delete('/:heroId', asyncWrapper(ctrlHero.removeHero));
+// router.put('/:heroId', addPutValidation, asyncWrapper(ctrlHero.changeContact));
+router.patch('/:heroId', asyncWrapper(ctrlHero.changeHero));
 // // router.patch('/:heroId', addPatchValidation, asyncWrapper(ctrlHero.patchContact));
 // router.patch('/:heroId', asyncWrapper(ctrlHero.patchContact));
 

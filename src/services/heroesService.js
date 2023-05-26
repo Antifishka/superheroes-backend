@@ -6,7 +6,12 @@ require('colors');
 const listHeroes = async (skip, limit) => {
     try {
         const superheroes = await Superhero.find({})
-            .select({ __v: 0 })
+            .select({
+                superpowers: 0,
+                catch_phrase: 0,
+                createdAt: 0,
+                updatedAt: 0, 
+            })
             .skip(skip)
             .limit(limit);
 
@@ -19,7 +24,7 @@ const listHeroes = async (skip, limit) => {
 
 const getHeroById = async (heroId) => {
     try {
-        const heroById = await Superhero.findById(mongoose.Types.ObjectId(heroId));
+        const heroById = await Superhero.findById(heroId);
         console.log(`Superhero with id '${heroId}'`.cyan, heroById);
         
         return heroById;
@@ -42,11 +47,36 @@ const addHero = async (
     }
 };
 
+const deleteHero = async (heroId) => {
+    try {
+        const deletedHero = await Superhero.findByIdAndDelete(heroId);
+
+        console.log(`Contact with id '${heroId}' successfully deleted.`.blue);
+        return deletedHero;
+    } catch (error) {
+        console.error(error);
+    }
+};
+
+const updateHero = async (heroId, nickname, real_name, origin_description, superpowers, catch_phrase, images) => {
+  try {
+    await Superhero.findByIdAndUpdate(heroId,
+        { $set: { nickname, real_name, origin_description, superpowers, catch_phrase, images } }
+    );
+
+    const updatedHero = await Superhero.findById(heroId);
+
+    console.log(`Contact with id '${heroId}' successfully updated.`.bgWhite);
+    return updatedHero;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 module.exports = {
     listHeroes,
     getHeroById,
-//   deleteContact,
     addHero,
-//   updateContact,
-//   updateStatusContact,
+    deleteHero,
+    updateHero,
 };
