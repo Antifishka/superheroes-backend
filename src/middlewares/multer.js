@@ -2,6 +2,7 @@ const multer = require("multer");
 const path = require("path");
 
 const tmpDir = path.resolve("./tmp");
+console.log(tmpDir, "tmpDir");
 
 const multerConfig = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -13,11 +14,11 @@ const multerConfig = multer.diskStorage({
   },
 });
 
-const upload = multer({
+const uploader = multer({
   storage: multerConfig,
-  limits: {
-    fileSize: 1048576,
-  },
+  // limits: {
+  //   fileSize: 1048576,
+  // },
 });
 
-module.exports = upload;
+module.exports = uploader;

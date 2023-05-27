@@ -3,18 +3,18 @@ const router = new express.Router();
 const {
   addPostValidation,
   addPatchValidation,
-  upload,
+  uploader,
 } = require('../../middlewares');
 const { asyncWrapper } = require('../../helpers/apiHelpers');
-const ctrlHero = require('../../controllers/heroesController');
+const ctrl = require('../../controllers/heroesController');
 
-router.get('/', asyncWrapper(ctrlHero.getHeroes));
-router.get('/:heroId', asyncWrapper(ctrlHero.getById));
+router.get('/', asyncWrapper(ctrl.getHeroes));
+router.get('/:heroId', asyncWrapper(ctrl.getById));
 router.post('/',
   // addPostValidation,
-  upload.single("images"),
-  asyncWrapper(ctrlHero.createHero));
-router.delete('/:heroId', asyncWrapper(ctrlHero.removeHero));
-router.patch('/:heroId', addPatchValidation, asyncWrapper(ctrlHero.changeHero));
+  uploader.single("image"),
+  asyncWrapper(ctrl.createHero));
+router.delete('/:heroId', asyncWrapper(ctrl.removeHero));
+router.patch('/:heroId', addPatchValidation, asyncWrapper(ctrl.changeHero));
 
 module.exports = router;
