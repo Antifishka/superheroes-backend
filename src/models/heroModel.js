@@ -1,3 +1,4 @@
+const { array } = require('joi');
 const mongoose = require('mongoose');
 
 const superheroSchema = new mongoose.Schema({
@@ -18,9 +19,8 @@ const superheroSchema = new mongoose.Schema({
     type: String,
   },
   images: {
-    type: String,
+    type: Array,
     default: null,
-    required: [true, 'Image is required'],
   },
 },
   { versionKey: false, timestamps: true }

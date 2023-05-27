@@ -1,6 +1,6 @@
 const { Superhero } = require('../models/heroModel');
 const { ConflictError } = require('../helpers/errors');
-const cloudinary = require("../middlewares/cloudinary");
+const { uploadHeroImage } = require("../middlewares/cloudinary");
 const fs = require("fs/promises");
 require('colors');
 
@@ -34,7 +34,7 @@ const getHeroById = async (heroId) => {
     }
 };
 
-const addHero = async (path, heroData) => {
+const addHero = async (pathFile, heroData) => {
     try {
         const { nickname } = heroData;
         const checkSuperhero = await Superhero.findOne({ nickname });
@@ -43,12 +43,14 @@ const addHero = async (path, heroData) => {
             throw new ConflictError("Such a superhero already exists");
         };
 
-        console.log(path, "path");
-        const upload = await cloudinary.v2.uploader.upload(path);
+        const imageURL = await uploadHeroImage(pathFile);
+        fs.unlink(pathFile);
+
+        imagesArray.push
 
         const newSuperhero = await Superhero.create({
             ...heroData,
-            images: upload.secure_url,
+            images: imageURL,
         });
        
         console.log(`Superhero ${nickname} successfully added.`.yellow);

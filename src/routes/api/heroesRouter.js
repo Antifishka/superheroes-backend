@@ -12,7 +12,7 @@ router.get('/', asyncWrapper(ctrl.getHeroes));
 router.get('/:heroId', asyncWrapper(ctrl.getById));
 router.post('/',
   // addPostValidation,
-  uploader.single("image"),
+  uploader.array("images"),
   asyncWrapper(ctrl.createHero));
 router.delete('/:heroId', asyncWrapper(ctrl.removeHero));
 router.patch('/:heroId', addPatchValidation, asyncWrapper(ctrl.changeHero));

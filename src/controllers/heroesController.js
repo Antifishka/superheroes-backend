@@ -38,7 +38,6 @@ const getById = async (req, res, next) => {
 const createHero = async (req, res, next) => {
     const heroData = req.body;
     const { path } = req.file;
-    console.log(req.file, "req.file");
 
     const newSuperhero = await addHero(path, heroData);
     
