@@ -7,11 +7,11 @@ const superheroSchema = new mongoose.Schema({
   },
   real_name: {
     type: String,
-    required: [true, 'Real name is required'],
+    // required: [true, 'Real name is required'],
   },
   origin_description: {
     type: String,
-    required: [true, 'Origin description is required'],
+    // required: [true, 'Origin description is required'],
   },
   superpowers: {
     type: String,
@@ -20,7 +20,7 @@ const superheroSchema = new mongoose.Schema({
     type: String,
   },
   images: {
-    type: Array,
+    type: String,
     default: null,
   },
 },

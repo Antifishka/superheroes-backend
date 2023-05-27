@@ -37,8 +37,9 @@ const getById = async (req, res, next) => {
 
 const createHero = async (req, res, next) => {
     const heroData = req.body;
+    const { path } = req.file;
 
-    const newSuperhero = await addHero(req.file, heroData);
+    const newSuperhero = await addHero(path, heroData);
     
     res.status(201).json({newSuperhero});
 };

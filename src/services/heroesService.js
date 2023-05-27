@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const { Superhero } = require('../models/heroModel');
 const { ConflictError } = require('../helpers/errors');
+const { uploadHeroImage } = require("../middlewares");
+const fs = require("fs/promises");
 require('colors');
 
 const listHeroes = async (skip, limit) => {
@@ -33,7 +35,7 @@ const getHeroById = async (heroId) => {
     }
 };
 
-const addHero = async ( file, heroData) => {
+const addHero = async ( path, heroData) => {
     try {
         const { nickname } = heroData;
         const checkSuperhero = await Superhero.findOne({ nickname });
@@ -42,12 +44,10 @@ const addHero = async ( file, heroData) => {
             throw new ConflictError("Such a superhero already exists");
         };
 
-        const data = !!file
-            ? { images: req.file.path, ...heroData }
-            : { ...heroData };
+        const images = await uploadHeroImage(path);
+        fs.unlink(path);
 
-        const newSuperhero = new Superhero(data);
-        await newSuperhero.save();
+        const newSuperhero = await Superhero.create({ ...heroData, images });
 
         console.log(`Superhero ${nickname} successfully added.`.yellow);
         return newSuperhero;

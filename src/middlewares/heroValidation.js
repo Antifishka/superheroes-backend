@@ -11,11 +11,11 @@ module.exports = {
             real_name: Joi.string()
                 .min(3)
                 .max(30)
-                .required(),
+                .optional(),
             origin_description: Joi.string()
                 .min(8) 
-                .max(200)
-                .required(),
+                .max(300)
+                .optional(),
             superpowers: Joi.string()
                 .min(6) 
                 .max(200)
@@ -24,8 +24,9 @@ module.exports = {
                 .min(6) 
                 .max(100)
                 .optional(),
-            images: Joi.array()
-                .items(Joi.string())
+            images: Joi.string()
+                // .array()
+                // .items(Joi.string())
                 .optional(),
         });
 
@@ -49,7 +50,7 @@ module.exports = {
                 .optional(),
             origin_description: Joi.string()
                 .min(8) 
-                .max(200)
+                .max(300)
                 .optional(),
             superpowers: Joi.string()
                 .min(6) 
@@ -59,8 +60,9 @@ module.exports = {
                 .min(6) 
                 .max(100)
                 .optional(),
-            images: Joi.array()
-                .items(Joi.string())
+            images: Joi.string()
+                // .array()
+                // .items(Joi.string())
                 .optional(),
         });
 

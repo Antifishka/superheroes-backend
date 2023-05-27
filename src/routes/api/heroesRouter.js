@@ -3,7 +3,7 @@ const router = new express.Router();
 const {
   addPostValidation,
   addPatchValidation,
-  uploadCloud
+  upload,
 } = require('../../middlewares');
 const { asyncWrapper } = require('../../helpers/apiHelpers');
 const ctrlHero = require('../../controllers/heroesController');
@@ -11,8 +11,8 @@ const ctrlHero = require('../../controllers/heroesController');
 router.get('/', asyncWrapper(ctrlHero.getHeroes));
 router.get('/:heroId', asyncWrapper(ctrlHero.getById));
 router.post('/',
-  addPostValidation,
-  uploadCloud.single("image"),
+  // addPostValidation,
+  upload.single("images"),
   asyncWrapper(ctrlHero.createHero));
 router.delete('/:heroId', asyncWrapper(ctrlHero.removeHero));
 router.patch('/:heroId', addPatchValidation, asyncWrapper(ctrlHero.changeHero));
