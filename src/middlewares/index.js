@@ -1,9 +1,8 @@
 const { addPostValidation, addPatchValidation } = require('./heroValidation');
-const uploader = require('./multer');
-const { uploadHeroImage } = require('./cloudinary');
+const uploadCloud = require('./uploadMiddleware');
  
 module.exports = {
     addPostValidation,
     addPatchValidation,
-    uploader,
+    uploadCloud,
 }

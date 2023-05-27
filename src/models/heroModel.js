@@ -20,7 +20,8 @@ const superheroSchema = new mongoose.Schema({
   },
   images: {
     type: Array,
-    default: null,
+    required: [true, 'Image is required'],
+    default: [],
   },
 },
   { versionKey: false, timestamps: true }

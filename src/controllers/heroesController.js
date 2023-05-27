@@ -4,7 +4,6 @@ const {
     addHero,
     deleteHero,
     updateHero,
-    updateStatusContact,
 } = require('../services/heroesService');
 const { NotFoundError } = require('../helpers/errors');
 
@@ -19,7 +18,6 @@ const getHeroes = async (req, res, next) => {
         superheroes,
         page,
         per_page: limit,
-        total: superheroes.length,
     });
 };
 
@@ -37,9 +35,8 @@ const getById = async (req, res, next) => {
 
 const createHero = async (req, res, next) => {
     const heroData = req.body;
-    const { path } = req.file;
 
-    const newSuperhero = await addHero(path, heroData);
+    const newSuperhero = await addHero(req.files, heroData);
     
     res.status(201).json({newSuperhero});
 };

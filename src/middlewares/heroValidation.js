@@ -7,7 +7,7 @@ module.exports = {
             nickname: Joi.string()
                 .min(3)
                 .max(30)
-                .required(),
+                .optional(),
             real_name: Joi.string()
                 .min(3)
                 .max(30)
@@ -24,9 +24,8 @@ module.exports = {
                 .min(6) 
                 .max(100)
                 .optional(),
-            images: Joi.string()
-                // .array()
-                // .items(Joi.string())
+            images: Joi.array()
+                .items(Joi.string())
                 .optional(),
         });
 
@@ -60,9 +59,8 @@ module.exports = {
                 .min(6) 
                 .max(100)
                 .optional(),
-            images: Joi.string()
-                // .array()
-                // .items(Joi.string())
+            images: Joi.array()
+                .items(Joi.string())
                 .optional(),
         });
 
