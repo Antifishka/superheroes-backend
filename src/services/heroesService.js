@@ -8,6 +8,8 @@ const listHeroes = async (skip, limit) => {
     try {
         const superheroes = await Superhero.find({})
             .select({
+                real_name: 0,
+                origin_description: 0,
                 superpowers: 0,
                 catch_phrase: 0,
                 createdAt: 0,
@@ -66,11 +68,11 @@ const deleteHero = async (heroId) => {
     }
 };
 
-const updateHero = async (heroId, nickname, real_name, origin_description, superpowers, catch_phrase, images) => {
-  try {
-    await Superhero.findByIdAndUpdate(heroId,
-        { $set: { nickname, real_name, origin_description, superpowers, catch_phrase, images } }
-    );
+const updateHero = async (images, heroId, heroData) => {
+    try {
+        await Superhero.findByIdAndUpdate(
+            heroId, { ...heroData, images: images }
+        );
 
     const updatedHero = await Superhero.findById(heroId);
 

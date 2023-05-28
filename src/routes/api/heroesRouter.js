@@ -15,6 +15,9 @@ router.post('/',
   uploadCloud.array("images", 10),
   asyncWrapper(ctrl.createHero));
 router.delete('/:heroId', asyncWrapper(ctrl.removeHero));
-router.patch('/:heroId', addPatchValidation, asyncWrapper(ctrl.changeHero));
+router.patch('/:heroId',
+  addPatchValidation,
+  uploadCloud.array("images", 10),
+  asyncWrapper(ctrl.changeHero));
 
 module.exports = router;

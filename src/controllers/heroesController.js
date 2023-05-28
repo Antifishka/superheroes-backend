@@ -53,9 +53,9 @@ const removeHero = async (req, res, next) => {
 
 const changeHero = async (req, res, next) => {
     const { heroId } = req.params;
-    const { nickname, real_name, origin_description, superpowers, catch_phrase, images } = req.body;
+    const heroData = req.body;
 
-    const updatedHero = await updateHero(heroId, nickname, real_name, origin_description, superpowers, catch_phrase, images);
+    const updatedHero = await updateHero(req.files, heroId, heroData);
 
     if (!updatedHero) {
       throw new NotFoundError(`Contact with id '${heroId}' not found`);
