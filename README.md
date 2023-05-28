@@ -10,27 +10,24 @@ I am pleased to present you a web application about superheroes!
 
 https://superheroes-q2df.onrender.com
 
-📌 GET https://superheroes-q2df.onrender.com/api/superheroes
-   Responce: 
-   {
-    "superheroes": [
-        {
-            "_id": "6472768d812aad94bd228546",
-            "nickname": "Thor",
-            "images": [
-                {
-                    "fieldname": "images",
-                    "originalname": "thor_01.png",
-                    "encoding": "7bit",
-                    "mimetype": "image/png",
-                    "path": "https://res.cloudinary.com/difzulof8/image/upload/v1685223053/m6mbkzjvrdlco9af6huu.png",
-                    "size": 26528,
-                    "filename": "m6mbkzjvrdlco9af6huu"
-                }
-            ]
-        }, 
-            . . .
-            "page": 2,
-            "per_page": 5,
-            "total": 7
-        }
+🔗 GET https://superheroes-q2df.onrender.com/api/superheroes
+📌 Responce
+![Responce](https://i.postimg.cc/nVWhkPQJ/2023-05-28-16-30-27.png)
+📌 ...with pagination
+![Responce](https://i.postimg.cc/tJ8R4sHT/2023-05-28-16-30-54.png)
+
+🔗 POST https://superheroes-q2df.onrender.com/api/superheroes
+📌 Responce
+![Responce](https://i.postimg.cc/Z5L6QmSg/2023-05-28-16-46-39.png)
+
+🔗 GET https://superheroes-q2df.onrender.com/api/superheroes/:heroId
+📌 Responce
+![Responce](https://i.postimg.cc/Qd8xm9J2/2023-05-28-16-54-24.png)
+
+🔗 DELETE https://superheroes-q2df.onrender.com/api/superheroes/:heroId
+📌 Responce
+![Responce](https://i.postimg.cc/6qcFp34Z/2023-05-28-16-56-26.png)
+
+🔗 PATCH https://superheroes-q2df.onrender.com/api/superheroes/:heroId
+📌 Responce
+![Responce](https://i.postimg.cc/wxDmbNDM/2023-05-28-17-01-26.png)
