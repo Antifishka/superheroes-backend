@@ -73,7 +73,7 @@ const deleteHero = async (heroId) => {
 const updateHero = async (images, heroId, heroData) => {
     try {
         await Superhero.findByIdAndUpdate(
-            heroId, { ...heroData, images: [...images]}
+            heroId, { ...heroData, images: [...images ]}
         );
 
     const updatedHero = await Superhero.findById(heroId);
