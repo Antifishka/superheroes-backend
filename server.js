@@ -5,7 +5,7 @@ require('dotenv').config();
 const { DB_HOST, PORT = 3000 } = process.env;
 
 mongoose
-  .connect(DB_HOST)
+  .connect(DB_HOST.toString())
   .then(() =>
     app.listen(PORT, () =>
       console.log(`Database connection successful. API is on port: ${PORT}`)
