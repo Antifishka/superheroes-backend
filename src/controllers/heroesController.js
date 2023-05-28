@@ -13,11 +13,12 @@ const getHeroes = async (req, res, next) => {
     limit = parseInt(limit);
     const skip = (page - 1) * limit;
 
-    const superheroes = await listHeroes(skip, limit);
+    const { superheroes, totalSuperheroes } = await listHeroes(skip, limit);
     res.status(200).json({
         superheroes,
         page,
         per_page: limit,
+        total: totalSuperheroes,
     });
 };
 

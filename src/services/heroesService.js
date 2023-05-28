@@ -17,9 +17,11 @@ const listHeroes = async (skip, limit) => {
             })
             .skip(skip)
             .limit(limit);
+        
+        const totalSuperheroes = await Superhero.countDocuments();
 
         console.log(`Total superheroes: ${superheroes.length}`.green);
-        return superheroes;
+        return { superheroes, totalSuperheroes };
     } catch (error) {
         console.error(error);
     }
