@@ -72,17 +72,21 @@ const deleteHero = async (heroId) => {
 
 const updateHero = async (images, heroId, heroData) => {
     try {
+        const hero = await Superhero.findById(heroId);
+
+        const updatedImages = [...hero.images, ...images];
+
         await Superhero.findByIdAndUpdate(
-            heroId, { ...heroData, images: [...images ]}
+            heroId, { ...heroData, images: updatedImages}
         );
 
-    const updatedHero = await Superhero.findById(heroId);
+        const updatedHero = await Superhero.findById(heroId);
 
-    console.log(`Contact with id '${heroId}' successfully updated.`.bgWhite);
-    return updatedHero;
-  } catch (error) {
-    console.error(error);
-  }
+        console.log(`Superhero with id '${heroId}' successfully updated.`.bgWhite);
+        return updatedHero;
+    } catch (error) {
+        console.error(error);
+    }
 };
 
 module.exports = {
