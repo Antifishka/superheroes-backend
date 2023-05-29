@@ -11,7 +11,7 @@ I am pleased to present you a web application about superheroes!
 ### 🔗 GET https://superheroes-q2df.onrender.com/api/superheroes
 
 📌 Responce
-![Responce](https://i.postimg.cc/nVWhkPQJ/2023-05-28-16-30-27.png)
+![Responce](https://i.postimg.cc/mkWnYDsg/2023-05-29-12-18-29.png)
 📌 ...with pagination
 ![Responce](https://i.postimg.cc/tJ8R4sHT/2023-05-28-16-30-54.png)
 
