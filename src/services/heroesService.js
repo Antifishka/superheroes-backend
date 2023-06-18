@@ -2,7 +2,6 @@ const { Superhero } = require('../models/heroModel');
 const { ConflictError } = require('../helpers/errors');
 const { uploadHeroImage } = require("../middlewares/uploadMiddleware");
 const fs = require("fs/promises");
-require('colors');
 
 const listHeroes = async (skip, limit) => {
     try {
@@ -20,7 +19,6 @@ const listHeroes = async (skip, limit) => {
         
         const totalSuperheroes = await Superhero.countDocuments();
 
-        console.log(`Total superheroes: ${superheroes.length}`.green);
         return { superheroes, totalSuperheroes };
     } catch (error) {
         console.error(error);
@@ -30,7 +28,6 @@ const listHeroes = async (skip, limit) => {
 const getHeroById = async (heroId) => {
     try {
         const heroById = await Superhero.findById(heroId);
-        console.log(`Superhero with id '${heroId}'`.cyan, heroById);
         
         return heroById;
     } catch (error) {
@@ -52,7 +49,6 @@ const addHero = async (images, heroData) => {
             images: images,
         });
        
-        console.log(`Superhero ${nickname} successfully added.`.yellow);
         return newSuperhero
     } catch (error) {
         console.error(error);
@@ -63,7 +59,6 @@ const deleteHero = async (heroId) => {
     try {
         const deletedHero = await Superhero.findByIdAndDelete(heroId);
 
-        console.log(`Contact with id '${heroId}' successfully deleted.`.blue);
         return deletedHero;
     } catch (error) {
         console.error(error);
@@ -82,7 +77,6 @@ const updateHero = async (images, heroId, heroData) => {
 
         const updatedHero = await Superhero.findById(heroId);
 
-        console.log(`Superhero with id '${heroId}' successfully updated.`.bgWhite);
         return updatedHero;
     } catch (error) {
         console.error(error);
