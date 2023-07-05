@@ -20,6 +20,7 @@ const superheroSchema = new mongoose.Schema({
   },
   views_count: {
     type: Number,
+    require: true,
     default: 0,
   },
   images: {
