@@ -24,6 +24,8 @@ module.exports = {
                 .min(6) 
                 .max(100)
                 .optional(),
+            views_count: Joi.number()
+                .optional(),
             images: Joi.array()
                 .items(Joi.string())
                 .optional(),
@@ -58,6 +60,8 @@ module.exports = {
             catch_phrase: Joi.string()
                 .min(6) 
                 .max(100)
+                .optional(),
+            views_count: Joi.number()
                 .optional(),
             images: Joi.array()
                 .items(Joi.string())

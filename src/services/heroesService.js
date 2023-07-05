@@ -11,6 +11,7 @@ const listHeroes = async (skip, limit) => {
                 origin_description: 0,
                 superpowers: 0,
                 catch_phrase: 0,
+                views_count: 0,
                 createdAt: 0,
                 updatedAt: 0, 
             })
@@ -27,7 +28,9 @@ const listHeroes = async (skip, limit) => {
 
 const getHeroById = async (heroId) => {
     try {
-        const heroById = await Superhero.findById(heroId);
+        const heroById = await Superhero.findOneAndUpdate(
+            heroId, { $inc: { views_count: 1 } }
+        );
         
         return heroById;
     } catch (error) {

@@ -18,8 +18,12 @@ const superheroSchema = new mongoose.Schema({
   catch_phrase: {
     type: String,
   },
+  views_count: {
+    type: Number,
+    default: 0,
+  },
   images: {
-    type: Array,
+    type: [String],
     required: [true, 'Image is required'],
     default: [],
   },
