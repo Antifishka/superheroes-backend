@@ -24,7 +24,7 @@ const superheroSchema = new mongoose.Schema({
     default: 0,
   },
   images: {
-    type: [String],
+    type: Array,
     required: [true, 'Image is required'],
     default: [],
   },

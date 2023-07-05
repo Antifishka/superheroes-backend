@@ -28,7 +28,7 @@ const listHeroes = async (skip, limit) => {
 
 const getHeroById = async (heroId) => {
     try {
-        const heroById = await Superhero.findOneAndUpdate(
+        const heroById = await Superhero.findByIdAndUpdate(
             heroId, { $inc: { views_count: 1 } }
         );
         
