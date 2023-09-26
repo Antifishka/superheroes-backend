@@ -1,7 +1,5 @@
 const { Superhero } = require('../models/heroModel');
 const { ConflictError } = require('../helpers/errors');
-const { uploadHeroImage } = require("../middlewares/uploadMiddleware");
-const fs = require("fs/promises");
 
 const listHeroes = async (skip, limit) => {
     try {
